@@ -110,7 +110,7 @@ end
 % 
 % plot(center(1),center(2),'ro');
 I = count_Callback(handles,Y_cnt,ctr);
-I(:, 2) = I(:,2) * (n1 - n0 + 1); % recover the real number of pixel counted.
+I(:, 2) = I(:,2) * (n1 - n0 + 1);
 set(handles.pushbutton2,'UserData',I);
 set(handles.LAD_edit,'string',num2str(I(1,1)));
 set(handles.LCX_edit,'string',num2str(I(2,1)));
@@ -237,8 +237,7 @@ I_3 = [I_3,I3];
 sizeI1 = size(I_1);
 sizeI2 = size(I_2);
 sizeI3 = size(I_3);
-I = [sum(I_1) sizeI1(2);sum(I_2) sizeI2(2);sum(I_3) sizeI3(2)]; 
-% the first column is radio count, second is the number of the pixel
+I = [sum(I_1) sizeI1(2);sum(I_2) sizeI2(2);sum(I_3) sizeI3(2)];
 
 
 % --- Executes during object creation, after setting all properties.

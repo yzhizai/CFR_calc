@@ -201,18 +201,19 @@ switch values
        set(handles.popupmenu,'userdata',area);
 %        legend('������������ֵ����');
      case 3
-       p=polyfit(t,M,5);
-       M2=polyval(p,t1);
+       set(handles.axes1,'xlim',[0,max(t)]);
+       set(handles.axes1,'ylim',[0,max(M)]);
+       [~, indx_m] = max(M(:));
+       indx = indx_m + 1;
+       temp_x = indx:(indx + 10);
+       temp_y = M(indx:(indx + 10));
+       mdl = fitlm(temp_x(:), log(temp_y(:)));
+       M(indx:end) = (exp(predict(mdl, t(indx:end)')))';
+       plot(t,M);
        xlabel('t', 'FontSize', 20);
        ylabel('counts', 'FontSize', 20);
-       set(handles.axes1,'xlim',[0,max(t1)]);
-       set(handles.axes1,'ylim',[0,max(M2)]);
-       plot(t1,M2);
-       area=trapz(t1,M2);
+       area=trapz(t,M);
        set(handles.popupmenu,'userdata',area);
-%        legend('����ʽ�������?);
-%    otherwise
-%        bresk;
 end
         
 
